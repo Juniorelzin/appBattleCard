@@ -8,6 +8,7 @@ import CadastrarUsuario from './src/pages/CadastrarUsuario';
 import TermoDeUsuario from './src/pages/TermoDeUsuario';
 import TelaDeLogin from './src/pages/TelaDeLogin';
 import IniciarJogo from './src/pages/IniciarJogo';
+import TelaBatalha from './src/pages/TelaBatalha';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,7 +52,10 @@ export default function App(){
         />
          <Stack.Screen name="IniciarJogo" component={IniciarJogo} 
           options={{title: 'Termo de Usuário', headerShown: false,}}
-        />    
+        />
+         <Stack.Screen name="TelaBatalha" component={TelaBatalha} 
+          options={{title: 'Tela de Batalha', headerShown: true,}}
+        />     
       </Stack.Navigator>
     </NavigationContainer>
   )

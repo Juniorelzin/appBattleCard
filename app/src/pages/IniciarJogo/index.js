@@ -25,12 +25,13 @@ let deck_goblins = [
   {image: require('/imagens/goblins/goblin3.jpg') ,nome: 'Sprigs', atk: 1600, def: 1600},
   {image: require('/imagens/goblins/goblin4.jpg') ,nome: 'Chantus', atk: 1900, def: 1700},
 ]
+let userDeck = []
   
 
 
 
 
-export default function IniciarJogo(){
+export default function TelaBatalha(){
 
     const[conteudoFeed, setConteudoFeed] = useState(<Conteudo />);
     const fadeAnim = useRef(new Animated.Value(0)).current
@@ -225,6 +226,7 @@ const styles = StyleSheet.create({
 })
 
 function Conteudo(){
+    const navigation = useNavigation()
     const [modalVisible, setModalVisible] = useState(false);
     const [modalContent, setModalContent] = useState()
     const image = require('/imagens/gifChamas.gif')
@@ -233,9 +235,12 @@ function Conteudo(){
     const starterDeck3 = require('/imagens/deck_Abertura3.png')
 
 
-    const handlePressIn = (conteudo) => {
-        setModalContent(conteudo);
-        setModalVisible(true);
+    const escolherDeck = () => {
+
+        userDeck = modalContent
+        console.log(userDeck)
+        navigation.navigate('TelaBatalha', { userDeck: userDeck })
+        setModalVisible(false)
       };
     
       const handlePressOut = () => {
@@ -338,7 +343,7 @@ function Conteudo(){
 
                     <TouchableOpacity
                       style={[styles.buttonEscolher]}
-                      onPress={handlePressOut}
+                      onPress={escolherDeck}
                     >
                       <Text style={styles.textStyleEscolher}>Escolher</Text>
                     </TouchableOpacity>
@@ -361,6 +366,7 @@ function Conteudo(){
               
             </View>
           </ImageBackground>
-        </View>
+        </View>     
+        
       );
     }
