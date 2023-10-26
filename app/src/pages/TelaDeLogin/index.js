@@ -87,6 +87,8 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         fontFamily: 'Fredericka the Great Regular',
         marginBottom: 20,
+        fontSize: 25,
+        fontWeight: 'bold',
 
     },
     botaoLogin: {

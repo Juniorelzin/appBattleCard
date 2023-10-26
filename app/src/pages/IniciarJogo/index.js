@@ -246,6 +246,7 @@ function Conteudo(){
         let userDeck = modalContent
         let userName = nomeJogador
         navigation.navigate('TelaBatalha', { userDeck: userDeck, userName: userName })
+        console.log(userDeck)
         setModalVisible(false)
       };
     

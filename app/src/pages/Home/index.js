@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     logo: {
-        height: '90%',
-        width: '90%',
+        height: 350,
+        width: 350,
         justifyContent: 'center',
         alignItems: 'center'
     },

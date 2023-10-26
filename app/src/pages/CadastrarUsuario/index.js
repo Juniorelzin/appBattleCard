@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     textoNome:{
         color: '#ffffff',
         fontSize: 25,
-        marginTop: 10,
         fontFamily: 'Cabin Sketch Regular',
         
         
@@ -73,13 +72,11 @@ const styles = StyleSheet.create({
     textoEmail:{
         color: '#ffffff',
         fontSize: 25,
-        marginTop: 10,
         fontFamily: 'Cabin Sketch Regular',
     },
     textoSenha:{
         color: '#ffffff',
         fontSize: 25,
-        marginTop: 10,
         fontFamily: 'Cabin Sketch Regular',
     },
     input:{
@@ -89,6 +86,9 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         paddingLeft: 10,
         fontFamily: 'Fredericka the Great Regular',
+        fontSize: 15,
+        fontWeight: 'bold',
+        marginBottom: 15
         
 
     },
@@ -195,7 +195,7 @@ return(
         <Text style={{color: '#ffffff', marginLeft: 10}}>Tenho mais de 18 anos, e li os <TouchableOpacity style={{color: '#3399cc'}} onPress={ () => navigation.navigate('TermoDeUsuario')}>Termos de usuário</TouchableOpacity> !</Text>
         </View>
 
-        <TouchableOpacity style={styles.botaoCadastrar}>
+        <TouchableOpacity style={styles.botaoCadastrar} disabled={!isChecked} activeOpacity={isChecked ? 0.5 : 1}>
             <Text style={styles.txtBtnCadastar}>Confirmar</Text>
             </TouchableOpacity>
 

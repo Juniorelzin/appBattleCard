@@ -492,6 +492,31 @@ const styles = StyleSheet.create({
        
 
       },
+      modalViewFimTop: {
+        height: '20%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+      },
+      modalViewFimMiddle: {
+        height: '60%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+      },
+      modalViewFimBottom: {
+        height: '20%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+      },
+     
+        
+
+     
    
    
     
@@ -510,6 +535,7 @@ function Conteudo(){
     const userDeck = route.params.userDeck;
     const userName = route.params.userName;
     deckAtualPlayer = userDeck
+   
 
     let i = 0
 
@@ -524,6 +550,7 @@ function Conteudo(){
 
     const [modalVisible, setModalVisible] = useState(false);
     const [modalResultVisible, setModalResultVisible] = useState(false);
+    const [modalFimVisible, setModalFimVisible] = useState(false);
     
 
 
@@ -534,6 +561,7 @@ function Conteudo(){
     const [iconStat, setIconStat] = useState(require('/imagens/logo.png'))
     const [textStatJogador, setTextStatJogador] = useState('')
     const [textStatNpc, setTextStatNpc] = useState('')
+    const [textResultadoFinal, setTextResultadoFinal] = useState('')
     
 
     const [cardImagePlayer, setCardImagePlayer] = useState(deckAtualPlayer[0].image)
@@ -611,8 +639,6 @@ function Conteudo(){
           setCardMagPlayer(proximaCarta.mag);
           setCardVelPlayer(proximaCarta.vel);
           setCardEspPlayer(proximaCarta.esp);
-        } else {
-          alert('Você não tem mais cartas para trocar.');
         }
         i++
       }
@@ -629,8 +655,6 @@ function Conteudo(){
           setCardMagNpc(proximaCarta.mag);
           setCardVelNpc(proximaCarta.vel);
           setCardEspNpc(proximaCarta.esp);
-        } else {
-          alert('Você não tem mais cartas para trocar.');
         }
         i++
       }
@@ -660,6 +684,10 @@ function Conteudo(){
               setImageBackSideCard(require('/imagens/backSideCard1.png'))
             break
 
+            case(6 - 1):
+              setImageBackSideCard(require('/imagens/backSideCard0.png'))
+            break
+
             default:
               break
       }
@@ -672,17 +700,67 @@ function Conteudo(){
         let rodada = roadasJogo
         rodada += 1
         setRodadasJogo(rodada)
-
+        console.log
 
         trocaCartaPlayer()
         trocaCartaNpc() 
         diminuirDeck()
+        verificarFim()
 
         setModalResultVisible(!modalResultVisible)
 
         
        
 
+      }
+
+      function verificarFim(){
+   
+        console.log(roadasJogo)
+
+        if(roadasJogo >= 6){
+          console.log('roadasJogo')
+          setModalFimVisible(!modalFimVisible)
+
+            let cartasDestruidasJogador = vidaJogador
+            let cartasDestruidasNpc = vidaNPC
+
+            if(cartasDestruidasJogador > cartasDestruidasNpc){
+
+                setTextResultadoFinal('Vitória')
+                styles.modalTextResultadoFinal = {
+                 color: '#ffd700',
+                 fontSize: 70,
+                 marginBottom: 15,
+                 textAlign: 'center',
+                 fontFamily: 'Fredericka the Great Regular',}
+
+            }
+            else if(cartasDestruidasJogador < cartasDestruidasNpc){
+
+                setTextResultadoFinal('Derrota')
+                styles.modalTextResultadoFinal = {
+                  color: '#ff0000',
+                  fontSize: 70,
+                  marginBottom: 15,
+                  textAlign: 'center',
+                  fontFamily: 'Fredericka the Great Regular',}
+            }
+            else{
+
+                setTextResultadoFinal('Empate')
+                styles.modalTextResultadoFinal = {
+                  color: '#007fff',
+                  fontSize: 70,
+                  marginBottom: 15,
+                  textAlign: 'center',
+                  fontFamily: 'Fredericka the Great Regular',}
+
+
+            }
+
+            
+        }
       }
     
       return (
@@ -982,6 +1060,69 @@ function Conteudo(){
                     </View>
                     </Modal>
                 </View>
+
+
+                <View style={styles.centeredView}>
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={modalFimVisible}
+                        onRequestClose={() => {
+                          setModalFimVisible(!modalFimVisible);
+                        }}>
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                        <ImageBackground source={require('/imagens/fundo_modal.jpg')} resizeMode="cover" style={styles.fundoModal}>
+                            
+
+                            <View style={styles.modalViewAll}>
+
+                                    <View style={styles.modalViewFimTop}>
+
+                                          <Text style={styles.modalTextResultadoFinal}>{textResultadoFinal}</Text>
+
+                                    </View>
+
+                                    <View style={styles.modalViewFimMiddle}>
+
+                                        <View style={{height: '10%', width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                                          <View style={{height: '100%', width: '50%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+
+                                                        <Text style={styles.modalText}>{userName}</Text>
+                                                        <Text style={styles.modalText}>Total de cartas que destrui:</Text>
+                                                        <Text style={styles.modalText}>{vidaJogador}</Text>
+                                         
+                                        </View>
+                                        <View style={{height: '100%', width: '50%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+
+                                                        <Text style={styles.modalText}>Jogador 2</Text>
+                                                        <Text style={styles.modalText}>Total de cartas que destrui:</Text>
+                                                        <Text style={styles.modalText}>{vidaNPC}</Text>
+                                         
+                                        </View>   
+                                        </View>
+                                          
+
+                                    </View>
+
+                                    <View style={styles.modalViewFimBottom}>
+
+                                            <TouchableOpacity
+                                              style={[styles.buttonCancelarModal]}
+                                              onPress={() => navigation.navigate('Home')}>
+                                              <Text style={styles.textStyleButtonModal}>Fechar</Text>
+                                            </TouchableOpacity>
+
+                                    </View>    
+
+                            </View>
+                          </ImageBackground>
+                        </View>
+                    </View>
+                    </Modal>
+                </View>
+
+
 
 
         </View>
