@@ -6,26 +6,29 @@ import { ScrollView } from "react-native";
 import { useRoute } from '@react-navigation/native';
 
 let deck_esqueletos = [
-  {image: require('/imagens/esqueletos/esqueleto0.jpg') ,nome: 'Skullshadow', atk: 2000, def: 2000},
-  {image: require('/imagens/esqueletos/esqueleto1.jpg') ,nome: 'Kinigit', atk: 1800, def: 1800},
-  {image: require('/imagens/esqueletos/esqueleto2.jpg') ,nome: 'Horghost', atk: 1900, def: 1600},
-  {image: require('/imagens/esqueletos/esqueleto3.jpg') ,nome: 'Berserk', atk: 2000, def: 1500},
-  {image: require('/imagens/esqueletos/esqueleto4.jpg') ,nome: 'Escorpileto', atk: 1800, def: 1700},
+  {image: require('/imagens/esqueletos/esqueleto0.jpg') ,nome: 'Skullshadow', atk: 2000, def: 2000, mag: 6, vel: 4, esp: 13},
+  {image: require('/imagens/esqueletos/esqueleto1.jpg') ,nome: 'Kinigit', atk: 1800, def: 1800, mag: 4, vel: 7, esp: 12},
+  {image: require('/imagens/esqueletos/esqueleto2.jpg') ,nome: 'Horghost', atk: 1900, def: 1600, mag: 6, vel: 7, esp: 13},
+  {image: require('/imagens/esqueletos/esqueleto3.jpg') ,nome: 'Berserk', atk: 2000, def: 1500, mag: 3, vel: 4, esp: 14},
+  {image: require('/imagens/esqueletos/esqueleto4.jpg') ,nome: 'Escorpileto', atk: 1800, def: 1700, mag: 5, vel: 3, esp: 12},
+  {image: require('/imagens/esqueletos/esqueleto5.jpg') ,nome: 'Corvicrow', atk: 1700, def: 1600, mag: 5, vel: 7, esp: 12},
 ]
 let deck_magos = [
-  {image: require('/imagens/magos/mago0.jpg') ,nome: 'Merlin', atk: 2100, def: 1900},
-  {image: require('/imagens/magos/mago1.jpg') ,nome: 'Meduxa', atk: 1700, def: 2000},
-  {image: require('/imagens/magos/mago2.jpg') ,nome: 'Epocus', atk: 1800, def: 1600},
-  {image: require('/imagens/magos/mago3.jpg') ,nome: 'Frontiacus', atk: 1800, def: 1800},
-  {image: require('/imagens/magos/mago4.jpg') ,nome: 'Invokyts', atk: 2000, def: 1900},
+  {image: require('/imagens/magos/mago0.jpg') ,nome: 'Merlin', atk: 2100, def: 1900, mag: 8, vel: 5, esp: 14},
+  {image: require('/imagens/magos/mago1.jpg') ,nome: 'Meduxa', atk: 1700, def: 2000, mag: 7, vel: 4, esp: 13},
+  {image: require('/imagens/magos/mago2.jpg') ,nome: 'Epocus', atk: 1800, def: 1600, mag: 6, vel: 6, esp: 12},
+  {image: require('/imagens/magos/mago3.jpg') ,nome: 'Frontiacus', atk: 1800, def: 1800, mag: 7, vel: 4, esp: 14},
+  {image: require('/imagens/magos/mago4.jpg') ,nome: 'Invokyts', atk: 2000, def: 1900, mag: 7, vel: 5, esp: 13},
+  {image: require('/imagens/magos/mago5.jpg') ,nome: 'Animagius', atk: 2000, def: 1800, mag: 8, vel: 4, esp: 13},
 ]
 let deck_goblins = [
-  {image: require('/imagens/goblins/goblin0.jpg') ,nome: 'Zigore', atk: 2000, def: 1800},
-  {image: require('/imagens/goblins/goblin1.jpg') ,nome: 'Archit', atk: 1800, def: 1500},
-  {image: require('/imagens/goblins/goblin2.jpg') ,nome: 'Brutehog', atk: 2100, def: 1600},
-  {image: require('/imagens/goblins/goblin3.jpg') ,nome: 'Sprigs', atk: 1600, def: 1600},
-  {image: require('/imagens/goblins/goblin4.jpg') ,nome: 'Chantus', atk: 1900, def: 1700},
-]
+  {image: require('/imagens/goblins/goblin0.jpg') ,nome: 'Zigore', atk: 2000, def: 1800, mag: 3, vel: 6, esp: 13},
+  {image: require('/imagens/goblins/goblin1.jpg') ,nome: 'Archit', atk: 1800, def: 1500, mag: 3, vel: 7, esp: 11},
+  {image: require('/imagens/goblins/goblin2.jpg') ,nome: 'Brutehog', atk: 2100, def: 1600, mag: 4, vel: 5, esp: 13},
+  {image: require('/imagens/goblins/goblin3.jpg') ,nome: 'Sprigs', atk: 1600, def: 1600, mag: 5, vel: 6, esp: 14},
+  {image: require('/imagens/goblins/goblin4.jpg') ,nome: 'Chantus', atk: 1900, def: 1700, mag: 6, vel: 4, esp: 13},
+  {image: require('/imagens/goblins/goblin5.jpg') ,nome: 'Flicts', atk: 1800, def: 1600, mag: 6, vel: 7, esp: 12},
+]  
 let deckNPC = []
 let deckAtualPlayer = []
 
@@ -38,6 +41,7 @@ export default function TelaBatalha(){
 
     const[conteudoFeed, setConteudoFeed] = useState(<Conteudo />);
     const fadeAnim = useRef(new Animated.Value(0)).current
+
 
     const fadeIn = () => {
       
@@ -82,6 +86,7 @@ const styles = StyleSheet.create({
     viewBottom: {
         height: '50%',
         width: '100%',
+        
        
     },
     viewPlayer: {
@@ -97,12 +102,13 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'blue',
+        
         
     },
     imageCardImage: {
         height: 200,
         width: 150,
+        borderRadius: 20,
         shadowColor: '#000',
         shadowOffset: {
           width: 0,
@@ -117,36 +123,72 @@ const styles = StyleSheet.create({
     viewLeft: {
         height: '100%',
         width: '40%',
-        backgroundColor: 'red'
+        backgroundColor: '#000000',
+        justifyContent: 'center',
+        alignItems: 'center'
+       
     },
     viewMiddle: {
         height: '100%',
         width: '20%',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'green'
+        
     },
     viewRight: {
         height: '100%',
         width: '40%',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#ffffff'
+        backgroundColor: '#000000'
+        
     },
+    viewLeftNpc: {
+      height: '100%',
+      width: '40%',
+      backgroundColor: '#000000',
+      justifyContent: 'center',
+      alignItems: 'center'
+     
+  },
+  viewMiddleNpc: {
+      height: '100%',
+      width: '20%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#000000',
+      
+  },
+  viewRightNpc: {
+      height: '100%',
+      width: '40%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#000000'
+      
+  },
     imageBackSide: {
-        height: '90%',
-        width: '40%',
+        height: 80,
+        width: 60,
+        
     },
     imageBatalha: {
-        height: 60,
-        width: 60,
-        objectFit: 'fill',
+        height: 50,
+        width: 50,
+     
     },
+    centeredView: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 20,   
+  },
     modalView: {
-        margin: 20,
+        height: '90%',
+        width: '90%',
         backgroundColor: 'white',
         borderRadius: 20,
-        padding: 35,
+       
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: {
@@ -157,26 +199,300 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5,
       },
+      fundoModal:{
+        height: '100%',
+        width: '100%',
+        borderRadius: 20,  
+        justifyContent: 'center',
+
+    },
       button: {
+        height: '100%',
+        width: '100%',
         borderRadius: 20,
         padding: 10,
         elevation: 2,
-      },
-      buttonOpen: {
-        backgroundColor: '#F194FF',
-      },
-      buttonClose: {
-        backgroundColor: '#2196F3',
+        flexDirection: 'row'
       },
       textStyle: {
+        fontSize: 14,
         color: 'white',
         fontWeight: 'bold',
         textAlign: 'center',
+        fontFamily: 'Fredericka the Great Regular',
+      },
+      textStyleNum: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontFamily: 'Fredericka the Great Regular',
       },
       modalText: {
+        fontSize: 25,
         marginBottom: 15,
+        color: '#ffffff',
+        fontWeight: 'bold',
         textAlign: 'center',
+        fontFamily: 'Fredericka the Great Regular',
       },
+      nomejogador: {
+        color: '#ffffff',
+        fontFamily: 'Fredericka the Great Regular',
+        marginBottom: 3,
+        fontSize: 20
+      },
+      pontos: {
+        color: '#ffffff',
+        fontFamily: 'Fredericka the Great Regular',
+        fontSize: 15
+      },
+      textBatalha: {
+        color: '#000000',
+        fontWeight: 'bold',
+        fontFamily: 'Fredericka the Great Regular',
+        fontSize: 15
+
+      },
+      textRodada: {
+        color: '#ffffff',
+        fontWeight: 'bold',
+        fontFamily: 'Fredericka the Great Regular',
+      },
+      modalViewAll: {
+        height: '100%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+     
+      },
+      modalViewText: {
+        height: '10%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+       
+      },
+      modalViewCard: {
+        height: '45%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+     
+      },
+      modalViewStatsAll: {
+        height: '30%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+      
+      },
+      modalViewStats1: {
+        height: '100%',
+        width: '50%',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        
+      },
+      modalViewStats2: {
+        height: '100%',
+        width: '50%',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+      
+      },
+      modalViewButton: {
+        height: '15%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    
+      },
+      textNomeCard: {
+        fontSize: 20,
+        color: '#ffffff',
+        fontWeight: 'bold',
+        fontFamily: 'Fredericka the Great Regular',
+
+      },
+      buttonCancelarModal: {
+        height: '50%',
+        width: '50%',
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#ffffff'
+
+      },
+      textStyleButtonModal: {
+        fontSize: 20,
+        color: '#000000',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontFamily: 'Fredericka the Great Regular',
+
+      },
+      touchIcon: {
+        justifyContent: 'center',
+        alignItems: 'center',
+
+      },
+      imageIconStats1: {
+        height: 40,
+        width: 40,
+     
+
+      },
+      imageIconStats2: {
+        height: 30,
+        width: 30,
+     
+
+      },
+      viewIconStats: {
+        height: '100%',
+        width: '30%',
+        justifyContent: 'center',
+        alignItems: 'center',
+     
+      },
+      viewTextStats: {
+        height: '100%',
+        width: '70%',
+        justifyContent: 'center',
+        alignItems: 'center',
+     
+
+      },
+      viewIStatsAtk: {
+        height: '33%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+     
+
+      },
+      viewIStatsDef: {
+        height: '33%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+    
+
+      },
+      viewIStatsMag: {
+        height: '33%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+      
+
+      },
+      viewIStatsVel: {
+        height: '50%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+      
+      
+
+      },
+      viewIStatsEsp: {
+        height: '50%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+       
+
+      },
+      modalView2Top: {
+        height: '10%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    
+
+      },
+      modalView2Card: {
+        height: '80%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+
+      },
+      modalView2Button: {
+        height: '10%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+ 
+
+      },
+      modalView2CardNpc: {
+        height: '45%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+      
+
+      },
+      modalView2CardResultado: {
+        height: '10%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+   
+
+      },
+      modalView2CardJogador: {
+        height: '45%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+   
+
+      },
+      imageCardImageModal:{
+        height: 150,
+        width: 100,
+        borderRadius: 20,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+
+      },
+      modalView2CardJogadorText: {
+        height: '20%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+    
+
+      },
+      modalView2CardJogadorImagem: {
+        height: '80%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+       
+
+      },
+   
    
     
 })
@@ -186,45 +502,70 @@ function Conteudo(){
     if (!deckNPC.length) {
         sortearDeck();
     }
-
+  
+   
 
     const navigation = useNavigation()
     const route = useRoute();
     const userDeck = route.params.userDeck;
+    const userName = route.params.userName;
     deckAtualPlayer = userDeck
 
-    shuffleArrayNpc(deckNPC)
-    shuffleArrayPlayer(deckAtualPlayer)
-    
-    let cardAtualPlayer = deckAtualPlayer[0]
-    let cardAtualNpc = deckNPC[0]
-
-    const [modalVisible, setModalVisible] = useState(false);
-    const [modalContent, setModalContent] = useState()
+    let i = 0
 
     const [vidaJogador, setVidaJogador] = useState(0);
     const [vidaNPC, setvidaNPC] = useState(0)
+    const [roadasJogo, setRodadasJogo] = useState(1)
+
+    if (roadasJogo == 1){
+      shuffleArrayNpc(deckNPC)
+      shuffleArrayPlayer(deckAtualPlayer)
+    }
+
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalResultVisible, setModalResultVisible] = useState(false);
+    
+
+
 
     const [cartaAtualIndexPlayer, setCartaAtualIndexPlayer] = useState(0);
     const [cartaAtualIndexNpc, setCartaAtualIndexNpc] = useState(0);
+    const [textResultado, setTextResultado] = useState('')
+    const [iconStat, setIconStat] = useState(require('/imagens/logo.png'))
+    const [textStatJogador, setTextStatJogador] = useState('')
+    const [textStatNpc, setTextStatNpc] = useState('')
+    
 
-    const [cardImagePlayer, setCardImagePlayer] = useState(cardAtualPlayer.image)
-    const [cardAtkPlayer, setCardAtkPlayer] = useState(cardAtualPlayer.atk)
-    const [cardDefPlayer, setCardDefPlayer] = useState(cardAtualPlayer.def)
+    const [cardImagePlayer, setCardImagePlayer] = useState(deckAtualPlayer[0].image)
+    const [cardNomePlayer, setCardNomePlayer] = useState(deckAtualPlayer[0].nome)
+    const [cardAtkPlayer, setCardAtkPlayer] = useState(deckAtualPlayer[0].atk)
+    const [cardDefPlayer, setCardDefPlayer] = useState(deckAtualPlayer[0].def)
+    const [cardMagPlayer, setCardMagPlayer] = useState(deckAtualPlayer[0].mag)
+    const [cardVelPlayer, setCardVelPlayer] = useState(deckAtualPlayer[0].vel)
+    const [cardEspPlayer, setCardEspPlayer] = useState(deckAtualPlayer[0].esp)
 
-    const [cardImageNpc, setCardImageNpc] = useState(cardAtualNpc.image)
-    const [cardAtkNpc, setCardAtkNpc] = useState(cardAtualNpc.atk)
-    const [cardDefNpc, setCardDefNpc] = useState(cardAtualNpc.def)
+    const [cardImageNpc, setCardImageNpc] = useState(deckNPC[0].image)
+    const [cardNomeNpc, setCardNomeNpc] = useState(deckNPC[0].nome)
+    const [cardAtkNpc, setCardAtkNpc] = useState(deckNPC[0].atk)
+    const [cardDefNpc, setCardDefNpc] = useState(deckNPC[0].def)
+    const [cardMagNpc, setCardMagNpc] = useState(deckNPC[0].mag)
+    const [cardVelNpc, setCardVelNpc] = useState(deckNPC[0].vel)
+    const [cardEspNpc, setCardEspNpc] = useState(deckNPC[0].esp)
 
-    const [imageBackSideCard, setImageBackSideCard] = useState(require('/imagens/backSideCard.png'))
-    const imageBatalhar = require('/imagens/batalhar.png')
+
+    const [imageBackSideCard, setImageBackSideCard] = useState(require('/imagens/backSideCard5.png'))
+    const [imageBatalhar, setimageBatalhar] = useState(require('/imagens/iconBatalhar.png'))
+    const [imageIconAtk, setimageIconAtk] = useState(require('/imagens/iconAtk.png'))
+    const [imageIconDef, setimageIconDef] = useState(require('/imagens/iconDef.png'))
+    const [imageIconMag, setimageIconMag] = useState(require('/imagens/iconMag.png'))
+    const [imageIconVel, setimageIconVel] = useState(require('/imagens/iconVel.png'))
+    const [imageIconEsp, setimageIconEsp] = useState(require('/imagens/iconEsp.png'))
+
    
     
-    
+    console.log(imageBackSideCard)
 
     
-
-    console.log(deckNPC)
     function sortearDeck(){
 
         let deckSortearNpc = []
@@ -245,6 +586,7 @@ function Conteudo(){
           [deckNPC[i], deckNPC[j]] = [deckNPC[j], deckNPC[i]];
         }
 
+        i++
         
     }
     function shuffleArrayPlayer(deckAtualPlayer) {
@@ -253,69 +595,95 @@ function Conteudo(){
           [deckAtualPlayer[i], deckAtualPlayer[j]] = [deckAtualPlayer[j], deckAtualPlayer[i]];
         }
 
+        i++
 
     }
     function trocaCartaPlayer() {
-        const próximoÍndice = cartaAtualIndexPlayer + 1
+        const proximoIndice = cartaAtualIndexPlayer + 1
         
-        if (próximoÍndice < deckAtualPlayer.length) {
-          setCartaAtualIndexPlayer(próximoÍndice)
-          const próximaCarta = deckAtualPlayer[próximoÍndice];
-          setCardImagePlayer(próximaCarta.image)
-          setCardAtkPlayer(próximaCarta.atk)
-          setCardDefPlayer(próximaCarta.def)
+        if (proximoIndice < deckAtualPlayer.length) {
+          setCartaAtualIndexPlayer(proximoIndice)
+          const proximaCarta = deckAtualPlayer[proximoIndice];
+          setCardImagePlayer(proximaCarta.image)
+          setCardNomePlayer(proximaCarta.nome)
+          setCardAtkPlayer(proximaCarta.atk)
+          setCardDefPlayer(proximaCarta.def)
+          setCardMagPlayer(proximaCarta.mag);
+          setCardVelPlayer(proximaCarta.vel);
+          setCardEspPlayer(proximaCarta.esp);
         } else {
           alert('Você não tem mais cartas para trocar.');
         }
+        i++
       }
       function trocaCartaNpc() {
-        const próximoÍndice = cartaAtualIndexNpc + 1
+        const proximoIndice = cartaAtualIndexNpc + 1
         
-        if (próximoÍndice < deckAtualPlayer.length) {
-          setCartaAtualIndexNpc(próximoÍndice)
-          const próximaCarta = deckNPC[próximoÍndice];
-          setCardImageNpc(próximaCarta.image)
-          setCardAtkNpc(próximaCarta.atk)
-          setCardDefNpc(próximaCarta.def)
+        if (proximoIndice < deckNPC.length) {
+          setCartaAtualIndexNpc(proximoIndice)
+          const proximaCarta = deckNPC[proximoIndice];
+          setCardImageNpc(proximaCarta.image)
+          setCardNomeNpc(proximaCarta.nome)
+          setCardAtkNpc(proximaCarta.atk)
+          setCardDefNpc(proximaCarta.def)
+          setCardMagNpc(proximaCarta.mag);
+          setCardVelNpc(proximaCarta.vel);
+          setCardEspNpc(proximaCarta.esp);
         } else {
           alert('Você não tem mais cartas para trocar.');
         }
+        i++
+      }
+      function diminuirDeck(){
+
+        let rodada = roadasJogo
+          
+          switch (roadasJogo){
+
+            case(1 - 1):
+              setImageBackSideCard(require('/imagens/backSideCard5.png'))
+            break
+
+            case(2 -1):
+              setImageBackSideCard(require('/imagens/backSideCard4.png'))
+            break
+
+            case(3 - 1):
+              setImageBackSideCard(require('/imagens/backSideCard3.png'))
+            break
+
+            case(4 - 1):
+              setImageBackSideCard(require('/imagens/backSideCard2.png'))
+            break
+
+            case(5 - 1):
+              setImageBackSideCard(require('/imagens/backSideCard1.png'))
+            break
+
+            default:
+              break
+      }
+    
+
       }
 
-    function compararAtk() {
-
-       
-        let vidaPlayer = vidaJogador
-        let vidaNpc = vidaNPC
-
-
-       if (cardAtualPlayer.atk > cardAtualNpc.atk) {
-
-            vidaPlayer += 1 
-            setVidaJogador(vidaPlayer)   
-            alert('você venceu')
-
-       }else if(cardAtualPlayer.atk < cardAtualNpc.atk){
-
-            vidaNpc += 1
-            setvidaNPC(vidaNpc)
-            alert('você perdeu')
-
-       }else {
-
-            vidaPlayer += 1 
-            vidaNpc += 1
-            setVidaJogador(vidaPlayer)
-            setvidaNPC(vidaNpc)  
-            alert('você empatou')
-       }
+      function resolver(){
+        
+        let rodada = roadasJogo
+        rodada += 1
+        setRodadasJogo(rodada)
 
 
         trocaCartaPlayer()
-        trocaCartaNpc()
-        setModalVisible(false)
+        trocaCartaNpc() 
+        diminuirDeck()
 
-    }
+        setModalResultVisible(!modalResultVisible)
+
+        
+       
+
+      }
     
       return (
         
@@ -325,22 +693,25 @@ function Conteudo(){
 
                     <View style={styles.viewPlayer}>
 
-                        <View style={styles.viewLeft}>
+                        <View style={styles.viewLeftNpc}>
 
-                            <Text>Jogador 2</Text>
-                            <Text>Cartas Destruidas: </Text>
-                            <Text>{vidaNPC}</Text>
+                        <Image style={styles.imageBackSide}source={imageBackSideCard}/>
                         
                         
                         </View>
 
-                        <View style={styles.viewMiddle}>
+                        <View style={styles.viewMiddleNpc}>
+
+                            <Text style={styles.textRodada}>Rodada</Text>
+                            <Text style={styles.textRodada}>{roadasJogo}</Text>
                     
                         </View>
 
-                        <View style={styles.viewRight}>
-
-                        <Image style={styles.imageBackSide}source={imageBackSideCard}/>
+                        <View style={styles.viewRightNpc}>
+                     
+                            <Text style={styles.nomejogador}>Jogador 2</Text>
+                            <Text style={styles.pontos}>Cartas Destruidas: </Text>
+                            <Text style={styles.pontos}>{vidaNPC}</Text>
                     
                         </View>
 
@@ -371,17 +742,17 @@ function Conteudo(){
                     <View style={styles.viewPlayer}>
 
                             <View style={styles.viewLeft}>
-                            <Text>Jogador 1</Text>
-                            <Text>Cartas Destruidas: </Text>
-                            <Text>{vidaJogador}</Text>
+                            <Text style={styles.nomejogador}>{userName}</Text>
+                            <Text style={styles.pontos}>Cartas Destruidas: </Text>
+                            <Text style={styles.pontos}>{vidaJogador}</Text>
                         
                             </View>
 
                             <View style={styles.viewMiddle}>
 
-                            <TouchableOpacity onPress={() => setModalVisible(true)}>
+                            <TouchableOpacity style={styles.touchIcon} onPress={() => setModalVisible(true)}>
                             <Image style={styles.imageBatalha}source={imageBatalhar}/>
-                            <Text>Batalhar</Text>
+                            <Text style={styles.textBatalha}>Batalhar</Text>
                             </TouchableOpacity>
                             </View>
 
@@ -408,29 +779,205 @@ function Conteudo(){
                         }}>
                     <View style={styles.centeredView}>
                         <View style={styles.modalView}>
-                            <Text style={styles.modalText}>Selecione como atacar: </Text>
+                        <ImageBackground source={require('/imagens/fundo_modal.jpg')} resizeMode="cover" style={styles.fundoModal}>
+                            
 
-                            <View>
+                            <View style={styles.modalViewAll}>
 
-                            <TouchableOpacity
-                                style={[styles.button, styles.buttonClose]}
-                                onPress={compararAtk}>
-                            <Text style={styles.textStyle}>{cardAtkPlayer}</Text>
-                            </TouchableOpacity>
+                              <View style={styles.modalViewText}>
 
-                            <TouchableOpacity
-                                style={[styles.button, styles.buttonClose]}
-                                onPress={() => setModalVisible(!modalVisible)}>
-                            <Text style={styles.textStyle}>{cardDefPlayer}</Text>
-                            </TouchableOpacity>
+                                  <Text style={styles.modalText}>Selecione como atacar: </Text>
 
+                              </View>
+
+                              <View style={styles.modalViewCard}>
+
+                                  <Image style={styles.imageCardImage}source={cardImagePlayer}/>
+                                  <Text style={styles.textNomeCard}>{cardNomePlayer}</Text>
+
+                              </View>
+
+                              <View style={styles.modalViewStatsAll}>
+
+                              <View style={styles.modalViewStats1}>
+
+
+                                  <View style={styles.viewIStatsAtk}>
+                                  <TouchableOpacity
+                                    style={[styles.button, styles.buttonClose]}
+                                    onPress={compararAtk}>
+                                      <View style={styles.viewIconStats}>
+                                      <Image style={styles.imageIconStats1}source={imageIconAtk}/>
+                                      </View>
+                                      <View style={styles.viewTextStats}>
+                                    <Text style={styles.textStyle}>ATAQUE</Text>
+                                    <Text style={styles.textStyleNum}>{cardAtkPlayer}</Text>
+                                     </View>
+                                  </TouchableOpacity>
+                                </View>
+
+                                
+
+                                  <View style={styles.viewIStatsDef}>
+                                  <TouchableOpacity
+                                    style={[styles.button, styles.buttonClose]}
+                                    onPress={compararDef}>
+                                      <View style={styles.viewIconStats}>
+                                      <Image style={styles.imageIconStats1}source={imageIconDef}/>
+                                      </View>
+                                      <View style={styles.viewTextStats}>
+                                    <Text style={styles.textStyle}>DEFESA</Text>
+                                    <Text style={styles.textStyleNum}>{cardDefPlayer}</Text>
+                                     </View>
+                                  </TouchableOpacity>
+                                </View>
+
+
+
+                                <View style={styles.viewIStatsMag}>
+                                  <TouchableOpacity
+                                    style={[styles.button, styles.buttonClose]}
+                                    onPress={compararMag}>
+                                      <View style={styles.viewIconStats}>
+                                      <Image style={styles.imageIconStats1}source={imageIconMag}/>
+                                      </View>
+                                      <View style={styles.viewTextStats}>
+                                    <Text style={styles.textStyle}>MAGIA</Text>
+                                    <Text style={styles.textStyleNum}>{cardMagPlayer}</Text>
+                                     </View>
+                                  </TouchableOpacity>
+                                </View>
+
+
+                              </View>
+
+                              <View style={styles.modalViewStats2}>
+
+                                <View style={styles.viewIStatsVel}>
+                                  <TouchableOpacity
+                                    style={[styles.button, styles.buttonClose]}
+                                    onPress={compararVel}>
+                                      <View style={styles.viewIconStats}>
+                                      <Image style={styles.imageIconStats2}source={imageIconVel}/>
+                                      </View>
+                                      <View style={styles.viewTextStats}>
+                                    <Text style={styles.textStyle}>VELOCIDADE</Text>
+                                    <Text style={styles.textStyleNum}>{cardVelPlayer}</Text>
+                                     </View>
+                                  </TouchableOpacity>
+                                </View>
+
+
+
+                                <View style={styles.viewIStatsEsp}>
+                                  <TouchableOpacity
+                                    style={[styles.button, styles.buttonClose]}
+                                    onPress={compararEsp}>
+                                      <View style={styles.viewIconStats}>
+                                      <Image style={styles.imageIconStats2}source={imageIconEsp}/>
+                                      </View>
+                                      <View style={styles.viewTextStats}>
+                                    <Text style={styles.textStyle}>ESPECIAL</Text>
+                                    <Text style={styles.textStyleNum}>{cardEspPlayer}</Text>
+                                     </View>
+                                  </TouchableOpacity>
+                                </View>
+
+
+                            
+
+
+                              </View>
+
+                              </View>
+
+                              <View style={styles.modalViewButton}>
+
+                                  <TouchableOpacity
+                                    style={[styles.buttonCancelarModal]}
+                                    onPress={() => setModalVisible(!modalVisible)}>
+                                    <Text style={styles.textStyleButtonModal}>Cancelar</Text>
+                                  </TouchableOpacity>
+
+                              </View>    
 
                             </View>
-                            <TouchableOpacity
-                                style={[styles.button, styles.buttonClose]}
-                                onPress={() => setModalVisible(!modalVisible)}>
-                            <Text style={styles.textStyle}>Cancelar</Text>
-                            </TouchableOpacity>
+                          </ImageBackground>
+                        </View>
+                    </View>
+                    </Modal>
+                </View>
+
+
+
+                <View style={styles.centeredView}>
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={modalResultVisible}
+                        onRequestClose={() => {
+                          setModalResultVisible(!modalResultVisible);
+                        }}>
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                        <ImageBackground source={require('/imagens/fundo_modal.jpg')} resizeMode="cover" style={styles.fundoModal}>
+                            
+
+                            <View style={styles.modalViewAll}>
+
+                                    <View style={styles.modalView2Top}>
+
+                                          <Text style={styles.modalText}>Resultado:</Text>
+
+                                    </View>
+
+                                    <View style={styles.modalView2Card}>
+
+                                      <View style={styles.modalView2CardNpc}>
+                                      <View style={styles.modalView2CardJogadorImagem}>
+                                        <Text style={styles.textNomeCard}>{cardNomeNpc}</Text>
+                                        <Image style={styles.imageCardImageModal}source={cardImageNpc}/>
+                                        </View>
+                                        <View style={styles.modalView2CardJogadorText}>
+                                        <Image style={styles.imageIconStats1}source={iconStat}/>
+                                        <Text style={styles.textNomeCard}>{textStatNpc}</Text>
+                                      </View>
+
+                                      </View>
+
+                                      <View style={styles.modalView2CardResultado}>
+
+                                         <Text style={styles.textNomeCard}>{textResultado}</Text>
+
+                                      </View>
+
+                                      <View style={styles.modalView2CardJogador}>
+                                      <View style={styles.modalView2CardJogadorText}>
+                                        <Image style={styles.imageIconStats1}source={iconStat}/>
+                                        <Text style={styles.textNomeCard}>{textStatJogador}</Text>
+                                      </View>
+                                      <View style={styles.modalView2CardJogadorImagem}>
+                                        <Image style={styles.imageCardImageModal}source={cardImagePlayer}/>
+                                        <Text style={styles.textNomeCard}>{cardNomePlayer}</Text>
+                                      </View>
+                                      </View>
+
+                                    </View>
+
+                            
+
+                                    <View style={styles.modalView2Button}>
+
+                                            <TouchableOpacity
+                                              style={[styles.buttonCancelarModal]}
+                                              onPress={resolver}>
+                                              <Text style={styles.textStyleButtonModal}>Fechar</Text>
+                                            </TouchableOpacity>
+
+                                    </View>    
+
+                            </View>
+                          </ImageBackground>
                         </View>
                     </View>
                     </Modal>
@@ -445,4 +992,177 @@ function Conteudo(){
 
 
       );
-}
+
+      function compararAtk() {
+
+        let vidaPlayer = vidaJogador
+        let vidaNpc = vidaNPC
+        
+
+       if (cardAtkPlayer > cardAtkNpc) {
+
+            vidaPlayer += 1 
+            setVidaJogador(vidaPlayer)   
+            setTextResultado('Você venceu essa rodada')
+
+       }else if(cardAtkPlayer < cardAtkNpc){
+
+            vidaNpc += 1
+            setvidaNPC(vidaNpc)
+            setTextResultado('Você Perdeu essa rodada')
+
+       }else {
+
+            vidaPlayer += 1 
+            vidaNpc += 1
+            setVidaJogador(vidaPlayer)
+            setvidaNPC(vidaNpc)  
+            setTextResultado('Rodada terminou em empate')
+       }
+
+        setTextStatNpc(cardAtkNpc)
+        setTextStatJogador(cardAtkPlayer)
+        setIconStat(require('/imagens/iconAtk.png'))
+        setModalVisible(false)
+        setModalResultVisible(!modalResultVisible)  
+
+    }
+    
+       function compararDef() {
+
+        let vidaPlayer = vidaJogador
+        let vidaNpc = vidaNPC
+
+
+       if (cardDefPlayer > cardDefNpc) {
+
+            vidaPlayer += 1 
+            setVidaJogador(vidaPlayer)   
+            setTextResultado('Você venceu essa rodada')
+
+       }else if(cardDefPlayer < cardDefNpc){
+
+            vidaNpc += 1
+            setvidaNPC(vidaNpc)
+            setTextResultado('Você Perdeu essa rodada')
+
+       }else {
+
+            vidaPlayer += 1 
+            vidaNpc += 1
+            setVidaJogador(vidaPlayer)
+            setvidaNPC(vidaNpc)  
+            setTextResultado('Rodada terminou em empate')
+       }
+
+        setTextStatNpc(cardDefNpc)
+        setTextStatJogador(cardDefPlayer)
+        setIconStat(require('/imagens/iconDef.png'))
+        setModalVisible(false)
+        setModalResultVisible(!modalResultVisible)
+
+    }
+     function compararMag() {
+
+        let vidaPlayer = vidaJogador
+        let vidaNpc = vidaNPC
+
+
+       if (cardMagPlayer > cardMagNpc) {
+
+            vidaPlayer += 1 
+            setVidaJogador(vidaPlayer)   
+            setTextResultado('Você venceu essa rodada')
+
+       }else if(cardMagPlayer < cardMagNpc){
+
+            vidaNpc += 1
+            setvidaNPC(vidaNpc)
+            setTextResultado('Você Perdeu essa rodada')
+
+       }else {
+
+            vidaPlayer += 1 
+            vidaNpc += 1
+            setVidaJogador(vidaPlayer)
+            setvidaNPC(vidaNpc)  
+            setTextResultado('Rodada terminou em empate')
+       }
+
+        setTextStatNpc(cardMagNpc)
+        setTextStatJogador(cardMagPlayer)
+        setIconStat(require('/imagens/iconMag.png'))
+        setModalVisible(false)
+        setModalResultVisible(!modalResultVisible) 
+        
+
+    }
+     function compararVel() {
+
+        let vidaPlayer = vidaJogador
+        let vidaNpc = vidaNPC
+
+
+       if (cardVelPlayer > cardVelNpc) {
+
+            vidaPlayer += 1 
+            setVidaJogador(vidaPlayer)   
+            setTextResultado('Você venceu essa rodada')
+
+       }else if(cardVelPlayer < cardVelNpc){
+
+            vidaNpc += 1
+            setvidaNPC(vidaNpc)
+            setTextResultado('Você Perdeu essa rodada')
+
+       }else {
+
+            vidaPlayer += 1 
+            vidaNpc += 1
+            setVidaJogador(vidaPlayer)
+            setvidaNPC(vidaNpc)  
+            setTextResultado('Rodada terminou em empate')
+       }
+
+        setTextStatNpc(cardVelNpc)
+        setTextStatJogador(cardVelPlayer)
+        setIconStat(require('/imagens/iconVel.png'))
+        setModalVisible(false)
+        setModalResultVisible(!modalResultVisible) 
+    }
+     function compararEsp() {
+
+        let vidaPlayer = vidaJogador
+        let vidaNpc = vidaNPC
+
+
+       if (cardEspPlayer > cardEspNpc) {
+
+            vidaPlayer += 1 
+            setVidaJogador(vidaPlayer)   
+            setTextResultado('Você venceu essa rodada')
+
+       }else if(cardEspPlayer < cardEspNpc){
+
+            vidaNpc += 1
+            setvidaNPC(vidaNpc)
+            setTextResultado('Você Perdeu essa rodada')
+
+       }else {
+
+            vidaPlayer += 1 
+            vidaNpc += 1
+            setVidaJogador(vidaPlayer)
+            setvidaNPC(vidaNpc)  
+            setTextResultado('Rodada terminou em empate')
+       }
+
+        setTextStatNpc(cardEspNpc)
+        setTextStatJogador(cardEspPlayer)
+        setIconStat(require('/imagens/iconEsp.png'))
+        setModalVisible(false)
+        setModalResultVisible(!modalResultVisible) 
+
+    }
+  }    
+ 

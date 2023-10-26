@@ -121,8 +121,16 @@ function TelaPrincipal(){
     const navigation = useNavigation();
     const image = require('/imagens/gifChamas.gif')
     const logo = require('/imagens/logo_sfundo2.png')
-    let inputName
+    const [inputName, setInputName] = useState('');
     let inputSenha
+
+    function fazerLogin(){
+
+        navigation.navigate('IniciarJogo', {inputName: inputName})
+
+
+
+    }
     return(
         <View style={styles.container}>
     
@@ -145,6 +153,7 @@ function TelaPrincipal(){
                             multiline= {false}
                             style={styles.input}
                             value={inputName}
+                            onChangeText={(text) => setInputName(text)}
                             />
 
 
@@ -164,7 +173,7 @@ function TelaPrincipal(){
 
                      <View style={styles.viewBottom}>
 
-                        <TouchableOpacity style={styles.botaoLogin} onPress={() => navigation.navigate('IniciarJogo')}>
+                        <TouchableOpacity style={styles.botaoLogin} onPress={fazerLogin}>
                         <Text style={styles.txtBtnLogin}>Entrar</Text>
                         </TouchableOpacity>
 
@@ -185,3 +194,5 @@ function TelaPrincipal(){
         </View>
     )
     }
+
+    
