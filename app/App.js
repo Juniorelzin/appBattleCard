@@ -54,7 +54,7 @@ export default function App(){
           options={{title: 'Termo de Usuário', headerShown: false,}}
         />
          <Stack.Screen name="TelaBatalha" component={TelaBatalha} 
-          options={{title: 'Tela de Batalha', headerShown: true,}}
+          options={{title: 'Tela de Batalha', headerShown: false,}}
         />     
       </Stack.Navigator>
     </NavigationContainer>

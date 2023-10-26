@@ -184,8 +184,8 @@ const styles = StyleSheet.create({
       borderRadius: 20,   
   },
     modalView: {
-        height: '90%',
-        width: '90%',
+        height: '95%',
+        width: '95%',
         backgroundColor: 'white',
         borderRadius: 20,
        
@@ -1025,7 +1025,7 @@ function Conteudo(){
 
                                       <View style={styles.modalView2CardResultado}>
 
-                                         <Text style={styles.textNomeCard}>{textResultado}</Text>
+                                         <Text style={styles.textResultResultado}>{textResultado}</Text>
 
                                       </View>
 
@@ -1145,12 +1145,28 @@ function Conteudo(){
             vidaPlayer += 1 
             setVidaJogador(vidaPlayer)   
             setTextResultado('Você venceu essa rodada')
+            styles.textResultResultado = {
+              color: '#ffd700',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
 
        }else if(cardAtkPlayer < cardAtkNpc){
 
             vidaNpc += 1
             setvidaNPC(vidaNpc)
             setTextResultado('Você Perdeu essa rodada')
+            styles.textResultResultado = {
+              color: '#ff0000',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
 
        }else {
 
@@ -1159,6 +1175,14 @@ function Conteudo(){
             setVidaJogador(vidaPlayer)
             setvidaNPC(vidaNpc)  
             setTextResultado('Rodada terminou em empate')
+            styles.textResultResultado = {
+              color: '#007fff',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
        }
 
         setTextStatNpc(cardAtkNpc)
@@ -1180,12 +1204,29 @@ function Conteudo(){
             vidaPlayer += 1 
             setVidaJogador(vidaPlayer)   
             setTextResultado('Você venceu essa rodada')
+            styles.textResultResultado = {
+              color: '#ffd700',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
+            
 
        }else if(cardDefPlayer < cardDefNpc){
 
             vidaNpc += 1
             setvidaNPC(vidaNpc)
             setTextResultado('Você Perdeu essa rodada')
+            styles.textResultResultado = {
+              color: '#ff0000',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
 
        }else {
 
@@ -1194,6 +1235,14 @@ function Conteudo(){
             setVidaJogador(vidaPlayer)
             setvidaNPC(vidaNpc)  
             setTextResultado('Rodada terminou em empate')
+            styles.textResultResultado = {
+              color: '#007fff',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
        }
 
         setTextStatNpc(cardDefNpc)
@@ -1214,12 +1263,28 @@ function Conteudo(){
             vidaPlayer += 1 
             setVidaJogador(vidaPlayer)   
             setTextResultado('Você venceu essa rodada')
+            styles.textResultResultado = {
+              color: '#ffd700',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
 
        }else if(cardMagPlayer < cardMagNpc){
 
             vidaNpc += 1
             setvidaNPC(vidaNpc)
             setTextResultado('Você Perdeu essa rodada')
+            styles.textResultResultado = {
+              color: '#ff0000',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
 
        }else {
 
@@ -1228,6 +1293,14 @@ function Conteudo(){
             setVidaJogador(vidaPlayer)
             setvidaNPC(vidaNpc)  
             setTextResultado('Rodada terminou em empate')
+            styles.textResultResultado = {
+              color: '#007fff',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
        }
 
         setTextStatNpc(cardMagNpc)
@@ -1249,12 +1322,28 @@ function Conteudo(){
             vidaPlayer += 1 
             setVidaJogador(vidaPlayer)   
             setTextResultado('Você venceu essa rodada')
+            styles.textResultResultado = {
+              color: '#ffd700',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
 
        }else if(cardVelPlayer < cardVelNpc){
 
             vidaNpc += 1
             setvidaNPC(vidaNpc)
             setTextResultado('Você Perdeu essa rodada')
+            styles.textResultResultado = {
+              color: '#ff0000',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
 
        }else {
 
@@ -1263,6 +1352,14 @@ function Conteudo(){
             setVidaJogador(vidaPlayer)
             setvidaNPC(vidaNpc)  
             setTextResultado('Rodada terminou em empate')
+            styles.textResultResultado = {
+              color: '#007fff',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
        }
 
         setTextStatNpc(cardVelNpc)
@@ -1282,12 +1379,28 @@ function Conteudo(){
             vidaPlayer += 1 
             setVidaJogador(vidaPlayer)   
             setTextResultado('Você venceu essa rodada')
+            styles.textResultResultado = {
+              color: '#ffd700',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
 
        }else if(cardEspPlayer < cardEspNpc){
 
             vidaNpc += 1
             setvidaNPC(vidaNpc)
             setTextResultado('Você Perdeu essa rodada')
+            styles.textResultResultado = {
+              color: '#ff0000',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
 
        }else {
 
@@ -1296,6 +1409,14 @@ function Conteudo(){
             setVidaJogador(vidaPlayer)
             setvidaNPC(vidaNpc)  
             setTextResultado('Rodada terminou em empate')
+            styles.textResultResultado = {
+              color: '#007fff',
+              fontWeight: 'bold',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: 'Fredericka the Great Regular',
+            }
+
        }
 
         setTextStatNpc(cardEspNpc)

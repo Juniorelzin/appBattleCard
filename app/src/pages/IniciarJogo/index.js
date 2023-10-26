@@ -176,8 +176,8 @@ const styles = StyleSheet.create({
 
     },
     imageModal: {
-        height: 100,
-        width: 70
+        height: 120,
+        width: 90
 
 
     },
@@ -213,8 +213,10 @@ const styles = StyleSheet.create({
         fontFamily: 'Fredericka the Great Regular',
     },
     modalText: {
+        fontSize: 15,
         marginBottom: 15,
         color: 'white',
+        fontWeight: 'bold',
         textAlign: 'center',
         fontFamily: 'Fredericka the Great Regular',
     },
@@ -224,6 +226,20 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       fontFamily: 'Fredericka the Great Regular',
 
+
+    },
+    viewIcon: {
+      height: '20%',
+      width: '60%',
+      flexDirection: 'row',
+      marginBottom: 10,
+      justifyContent: 'space-between',
+    
+
+    },
+    iconStats:{
+      height: 20,
+      width: 20
 
     }
 
@@ -239,6 +255,12 @@ function Conteudo(){
     const starterDeck3 = require('/imagens/deck_Abertura3.png')
     const route = useRoute();
     const nomeJogador = route.params.inputName;
+
+    const [imageIconAtk, setimageIconAtk] = useState(require('/imagens/iconAtk.png'))
+    const [imageIconDef, setimageIconDef] = useState(require('/imagens/iconDef.png'))
+    const [imageIconMag, setimageIconMag] = useState(require('/imagens/iconMag.png'))
+    const [imageIconVel, setimageIconVel] = useState(require('/imagens/iconVel.png'))
+    const [imageIconEsp, setimageIconEsp] = useState(require('/imagens/iconEsp.png'))
 
 
     const escolherDeck = () => {
@@ -321,7 +343,7 @@ function Conteudo(){
                     {modalContent && Array.isArray(modalContent) ? (
                       modalContent.map((conteudo, index) => (
                         
-                        <View key={index} style={{flexDirection: 'row', justifyContent: 'space-evenly', padding:10}}>
+                        <View key={index} style={{height: 200, flexDirection: 'row', justifyContent: 'space-evenly', padding:10}}>
                           
                           
                           <View style={styles.viewImage}> 
@@ -333,7 +355,44 @@ function Conteudo(){
                           </View>
 
                           <View style={styles.viewText2}>
-                            <Text style={styles.modalText}> Ataque: {conteudo.atk}, Defesa: {conteudo.def}</Text>
+
+                            <View style={styles.viewIcon}>
+
+                               <Image style={styles.iconStats}source={imageIconAtk}/>
+                               <Text style={styles.modalText}>{conteudo.atk}</Text>
+                               
+                            </View>
+
+                             <View style={styles.viewIcon}>
+
+                               <Image style={styles.iconStats}source={imageIconDef}/>
+                               <Text style={styles.modalText}>{conteudo.def}</Text>
+                               
+                            </View>
+
+                             <View style={styles.viewIcon}>
+
+                               <Image style={styles.iconStats}source={imageIconMag}/>
+                               <Text style={styles.modalText}>{conteudo.mag}</Text>
+                               
+                            </View>
+
+                             <View style={styles.viewIcon}>
+
+                               <Image style={styles.iconStats}source={imageIconVel}/>
+                               <Text style={styles.modalText}>{conteudo.vel}</Text>
+                               
+                            </View>
+
+                             <View style={styles.viewIcon}>
+
+                               <Image style={styles.iconStats}source={imageIconEsp}/>
+                               <Text style={styles.modalText}>{conteudo.esp}</Text>
+                               
+                            </View>
+                                                                           
+
+
                           </View>
                           
                         </View>
